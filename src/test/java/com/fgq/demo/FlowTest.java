@@ -71,11 +71,6 @@ public class FlowTest {
     void completeTask() {
         String taskId = "b06793d2-f972-11ee-b59b-00ff306296e3";
         taskService.complete(taskId);
-
-        // 添加流程变量
-        // Map<String, Object> variables = new HashMap<>();
-        // variables.put("approved", false); // 拒绝请假
-        // taskService.complete(taskId, variables);
     }
 
     /**
