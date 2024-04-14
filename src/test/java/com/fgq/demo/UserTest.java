@@ -67,7 +67,7 @@ public class UserTest {
     void completeTaskA() {
         Map<String, Object> variables = new HashMap<>();
         variables.put("name", "BBB");
-        taskService.complete("42eec25e-fa5d-11ee-8302-00ff306296e3", variables);
+        taskService.complete("b53b546e-fa61-11ee-8ffe-00ff306296e3", variables);
     }
 
 
@@ -76,7 +76,7 @@ public class UserTest {
      */
     @Test
     void completeTaskB() {
-        taskService.complete("5ee7dccf-fa5d-11ee-ada6-00ff306296e3");
+        taskService.complete("c8247c4b-fa61-11ee-a526-00ff306296e3");
     }
 
     /**
@@ -84,7 +84,7 @@ public class UserTest {
      */
     @Test
     void completeTaskC() {
-        taskService.complete("7fa387dc-fa5d-11ee-8c2f-00ff306296e3");
+        taskService.complete("d7bf1540-fa61-11ee-a785-00ff306296e3");
     }
 
     /**
@@ -92,7 +92,7 @@ public class UserTest {
      */
     @Test
     void completeTaskD() {
-        taskService.complete("dd79236d-fa5d-11ee-9e10-00ff306296e3");
+        taskService.complete("e827d492-fa61-11ee-a6da-00ff306296e3");
     }
 
 }
