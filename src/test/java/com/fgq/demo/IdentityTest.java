@@ -70,8 +70,15 @@ public class IdentityTest {
      */
     @Test
     void userQue2ry() {
+        // 查询所有
         List<Group> list = identityService.createGroupQuery().list();
         list.forEach(group -> System.out.println(group.getName()));
+        // 通过用户组id查询
+        Group group = identityService.createGroupQuery().groupId("group_1").singleResult();
+        System.out.println(group.getName());
+        // 通过用户id查询
+        Group group2 = identityService.createGroupQuery().groupMember("1").singleResult();
+        System.out.println(group2.getName());
     }
 
 
