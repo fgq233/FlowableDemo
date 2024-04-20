@@ -38,6 +38,8 @@ public class FlowTest {
                 .name("第一个流程案例")
                 .deploy();
         System.out.println(deploy.getId());
+        // 删除部署的流程
+        // repositoryService.deleteDeployment(deploy.getId());
     }
 
     /**
