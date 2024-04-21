@@ -93,7 +93,8 @@ public class CandidateTest {
                 .taskAssignee("A")
                 .singleResult();
         if (task != null) {
-            taskService.setAssignee(task.getId(), "B");
+            taskService.delegateTask(task.getId(), "B");
+//            taskService.setAssignee(task.getId(), "B");
             System.out.println("交接任务成功");
         }
     }
