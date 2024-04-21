@@ -39,7 +39,8 @@ public class FlowTest {
                 .deploy();
         System.out.println(deploy.getId());
         // 删除部署的流程
-        // repositoryService.deleteDeployment(deploy.getId());
+//         repositoryService.deleteDeployment(deploy.getId());
+//         repositoryService.deleteDeployment(deploy.getId(), true);
     }
 
     /**
