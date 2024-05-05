@@ -1,4 +1,4 @@
-package com.fgq.demo;
+package com.fgq.demo.base;
 
 import org.flowable.engine.IdentityService;
 import org.flowable.engine.RepositoryService;
@@ -13,10 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 排他网关
+ * 包容网关
  */
 @SpringBootTest
-public class GatewayTest1 {
+public class GatewayTest3 {
 
 
     @Autowired
@@ -34,8 +34,8 @@ public class GatewayTest1 {
     @Test
     void deployFlow() {
         Deployment deploy = repositoryService.createDeployment()
-                .addClasspathResource("xml/Gateway1.bpmn20.xml")
-                .name("排他网关案例")
+                .addClasspathResource("xml/Gateway3.bpmn20.xml")
+                .name("包容网关案例")
                 .deploy();
     }
 
@@ -44,8 +44,9 @@ public class GatewayTest1 {
      */
     @Test
     void startProcessInstance() {
-        runtimeService.startProcessInstanceByKey("X5");
+        runtimeService.startProcessInstanceByKey("X7");
     }
+
 
     /**
      * 完成任务 - 网关变量
@@ -53,8 +54,8 @@ public class GatewayTest1 {
     @Test
     void complete1() {
         Map<String, Object> var = new HashMap<>();
-        var.put("num", 3);
-        taskService.complete("fe523580-ffc3-11ee-81b9-00ff306296e3", var);
+        var.put("money", 888);
+        taskService.complete("602371f0-ffd0-11ee-8a89-00ff306296e3", var);
     }
 
 
@@ -63,7 +64,7 @@ public class GatewayTest1 {
      */
     @Test
     void complete2() {
-        taskService.complete("30d878f1-ffc4-11ee-946b-00ff306296e3");
+        taskService.complete("4052f4b9-ffd1-11ee-bcd3-00ff306296e3");
     }
 
 

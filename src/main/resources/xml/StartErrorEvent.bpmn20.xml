@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef" exporter="Flowable Open Source Modeler" exporterVersion="6.7.2">
+
+  <error id="myError" errorCode="404" />
+
+  <process id="StartErrorEvent" name="StartErrorEvent" isExecutable="true">
+    <documentation>错误启动事件</documentation>
+    <startEvent id="sid-CAFD6BE3-131E-45AD-A1F8-813D22D57A85" flowable:formFieldValidation="true"></startEvent>
+    <sequenceFlow id="sid-4BFF2B6D-18B7-476C-AEA8-9CF20AF818E8" sourceRef="sid-CAFD6BE3-131E-45AD-A1F8-813D22D57A85" targetRef="sid-1C9935E3-417C-4A0A-B4DF-B711E06CA90C"></sequenceFlow>
+    <serviceTask id="sid-1C9935E3-417C-4A0A-B4DF-B711E06CA90C" name="错误服务" flowable:class="com.fgq.demo.delegate.ErrorDelegate"></serviceTask>
+    <endEvent id="sid-E912DE8D-751A-4F62-A33F-FEA04D7313D7"></endEvent>
+    <sequenceFlow id="sid-1D0DDB55-65A6-45DE-9A2B-25B7A68828E7" sourceRef="sid-1C9935E3-417C-4A0A-B4DF-B711E06CA90C" targetRef="sid-E912DE8D-751A-4F62-A33F-FEA04D7313D7"></sequenceFlow>
+    <subProcess id="sid-D2275222-9246-4642-937D-106D19199A3C" name="subProcess" triggeredByEvent="true">
+      <startEvent id="sid-5A7EC9B6-8745-495D-B37C-5504E4A6F475" isInterrupting="true">
+        <errorEventDefinition errorRef="myError" flowable:errorVariableLocalScope="true" flowable:errorVariableTransient="true"></errorEventDefinition>
+      </startEvent>
+      <endEvent id="sid-624A7F27-1CBC-4140-9600-4F2A08B9E806"></endEvent>
+      <serviceTask id="sid-8B02C8E1-F6A0-461C-BF6D-60B7A2D60D86" name="自动服务" flowable:class="com.fgq.demo.delegate.MyJavaDelegate"></serviceTask>
+      <sequenceFlow id="sid-BE041F59-5E9A-4E9F-851A-1679B241F9A5" sourceRef="sid-5A7EC9B6-8745-495D-B37C-5504E4A6F475" targetRef="sid-8B02C8E1-F6A0-461C-BF6D-60B7A2D60D86"></sequenceFlow>
+      <sequenceFlow id="sid-80381FD8-8546-49FE-AB43-8FCE481C82F8" sourceRef="sid-8B02C8E1-F6A0-461C-BF6D-60B7A2D60D86" targetRef="sid-624A7F27-1CBC-4140-9600-4F2A08B9E806"></sequenceFlow>
+    </subProcess>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_StartErrorEvent">
+    <bpmndi:BPMNPlane bpmnElement="StartErrorEvent" id="BPMNPlane_StartErrorEvent">
+      <bpmndi:BPMNShape bpmnElement="sid-CAFD6BE3-131E-45AD-A1F8-813D22D57A85" id="BPMNShape_sid-CAFD6BE3-131E-45AD-A1F8-813D22D57A85">
+        <omgdc:Bounds height="30.0" width="30.0" x="112.5" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-1C9935E3-417C-4A0A-B4DF-B711E06CA90C" id="BPMNShape_sid-1C9935E3-417C-4A0A-B4DF-B711E06CA90C">
+        <omgdc:Bounds height="80.0" width="100.0" x="187.5" y="155.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-E912DE8D-751A-4F62-A33F-FEA04D7313D7" id="BPMNShape_sid-E912DE8D-751A-4F62-A33F-FEA04D7313D7">
+        <omgdc:Bounds height="28.0" width="28.0" x="316.5" y="181.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-D2275222-9246-4642-937D-106D19199A3C" id="BPMNShape_sid-D2275222-9246-4642-937D-106D19199A3C">
+        <omgdc:Bounds height="137.0" width="323.0" x="75.0" y="273.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-5A7EC9B6-8745-495D-B37C-5504E4A6F475" id="BPMNShape_sid-5A7EC9B6-8745-495D-B37C-5504E4A6F475">
+        <omgdc:Bounds height="30.0" width="30.0" x="88.0" y="311.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-624A7F27-1CBC-4140-9600-4F2A08B9E806" id="BPMNShape_sid-624A7F27-1CBC-4140-9600-4F2A08B9E806">
+        <omgdc:Bounds height="28.0" width="28.0" x="308.0" y="312.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-8B02C8E1-F6A0-461C-BF6D-60B7A2D60D86" id="BPMNShape_sid-8B02C8E1-F6A0-461C-BF6D-60B7A2D60D86">
+        <omgdc:Bounds height="80.0" width="100.0" x="163.0" y="286.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-1D0DDB55-65A6-45DE-9A2B-25B7A68828E7" id="BPMNEdge_sid-1D0DDB55-65A6-45DE-9A2B-25B7A68828E7" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="287.45000000000005" y="195.0"></omgdi:waypoint>
+        <omgdi:waypoint x="316.5" y="195.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-BE041F59-5E9A-4E9F-851A-1679B241F9A5" id="BPMNEdge_sid-BE041F59-5E9A-4E9F-851A-1679B241F9A5" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="117.94999848995758" y="326.0"></omgdi:waypoint>
+        <omgdi:waypoint x="162.9999999999917" y="326.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-80381FD8-8546-49FE-AB43-8FCE481C82F8" id="BPMNEdge_sid-80381FD8-8546-49FE-AB43-8FCE481C82F8" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="262.949999999934" y="326.0"></omgdi:waypoint>
+        <omgdi:waypoint x="308.0" y="326.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-4BFF2B6D-18B7-476C-AEA8-9CF20AF818E8" id="BPMNEdge_sid-4BFF2B6D-18B7-476C-AEA8-9CF20AF818E8" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="142.4499984899576" y="195.0"></omgdi:waypoint>
+        <omgdi:waypoint x="187.5" y="195.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,4 +1,4 @@
-package com.fgq.demo;
+package com.fgq.demo.base;
 
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
@@ -40,7 +40,7 @@ public class FlowTest {
         System.out.println(deploy.getId());
         // 删除部署的流程
 //         repositoryService.deleteDeployment(deploy.getId());
-//         repositoryService.deleteDeployment(deploy.getId(), true);
+//         repositoryService.deleteDeployment("deploy.getId()", true);
     }
 
     /**

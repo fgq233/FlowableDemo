@@ -1,4 +1,4 @@
-package com.fgq.demo;
+package com.fgq.demo.base;
 
 import org.flowable.engine.IdentityService;
 import org.flowable.engine.RepositoryService;
