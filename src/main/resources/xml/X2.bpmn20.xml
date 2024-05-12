@@ -22,7 +22,7 @@
     <sequenceFlow id="sid-19079601-485A-43A5-BD4E-94768FC1ECA2" sourceRef="sid-433E5DD0-14C6-4D9C-A55F-2A8407737FB1" targetRef="sid-AF71E5ED-27A2-477A-8078-7658A7C0CD46"></sequenceFlow>
     <userTask id="sid-A6B309A1-77E1-4D47-B6E7-A16A2365919B" name="环节D" flowable:formFieldValidation="true">
       <extensionElements>
-        <flowable:taskListener event="create" class="com.fgq.demo.listener.UserListener"></flowable:taskListener>
+        <flowable:taskListener event="create" class="com.fgq.demo.listener.MyTaskListener"></flowable:taskListener>
       </extensionElements>
     </userTask>
     <sequenceFlow id="sid-4F1D83F3-579C-468F-95D4-7193CB07A38E" sourceRef="sid-AF71E5ED-27A2-477A-8078-7658A7C0CD46" targetRef="sid-A6B309A1-77E1-4D47-B6E7-A16A2365919B"></sequenceFlow>
