@@ -1,8 +1,8 @@
 package com.fgq.demo.base;
 
 import org.flowable.engine.HistoryService;
-import org.flowable.engine.history.HistoricActivityInstance;
 import org.flowable.engine.history.HistoricProcessInstance;
+import org.flowable.task.api.history.HistoricTaskInstance;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,18 +35,26 @@ public class HiTest {
 
 
     /**
-     * 查询历史活动
+     * 查询历史
      */
     @Test
-    void createHistoricActivityInstanceQuery() {
-        String processInstanceId = "e9d03ce0-ffd1-11ee-8863-00ff306296e3";
-        List<HistoricActivityInstance> activities = historyService.createHistoricActivityInstanceQuery()
-                .processInstanceId(processInstanceId)
+    void historicQuery() {
+        // 查询已经完成的历史流程实例
+        List<HistoricProcessInstance> instanceList = historyService.createHistoricProcessInstanceQuery()
+//                .processInstanceId("")
                 .finished()
-                .orderByHistoricActivityInstanceEndTime().asc()
+                .orderByProcessInstanceEndTime()
+                .desc()
                 .list();
-        for (HistoricActivityInstance activity : activities) {
-            System.out.println(activity.getActivityName() + " --- " + activity.getAssignee() + " --- " + activity.getEndTime());
+        for (HistoricProcessInstance hiProcessInstance : instanceList) {
+            // 查询已经完成的历史任务实例
+            List<HistoricTaskInstance> taskList = historyService.createHistoricTaskInstanceQuery()
+                    .processInstanceId(hiProcessInstance.getId())
+                    .finished()
+                    .orderByHistoricTaskInstanceEndTime()
+                    .asc()
+                    .list();
+            taskList.forEach(hiTask -> System.out.println("环节：" + hiTask.getName() + ",办理人：" + hiTask.getAssignee() + ",完成时间：" + hiTask.getEndTime()));
         }
     }
 
