@@ -71,7 +71,10 @@ public class FlowTest {
                 .list();
         for (Task task : list) {
             System.out.println("任务id：" + task.getId());
+            System.out.println("主键ID：" + task.getTaskDefinitionKey());
             System.out.println("环节名称：" + task.getName());
+            System.out.println("办理人：" + task.getAssignee());
+            System.out.println("描述信息：" + task.getDescription());
         }
     }
 
